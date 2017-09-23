@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/cuzin85/express-rest#readme",
   "dependencies": {
-    "express": "^4.15.4"
+    "body-parser": "^1.18.2",
+    "express": "^4.15.4",
+    "mongoose": "^4.11.12"
   },
   "devDependencies": {
     "@types/express": "^4.0.37",
