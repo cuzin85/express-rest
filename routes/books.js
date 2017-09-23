@@ -13,6 +13,7 @@ booksRouter.route('/')
         query[filter] = req.query[filter];
       }
     }
+    console.log("query:", query);
     BookModel.find(query, (err, books) => {
       if (err) {
         res.status(500).send(err)
@@ -32,6 +33,28 @@ booksRouter.route('/')
       res.send(book);
     }
   });
+
+booksRouter.route('/author/:author/:genre')
+    .get((req, res) => {
+        BookModel.find({author: req.params.author, genre: req.params.genre}, (err, books) => {
+            if (err) {
+                res.status(500).send(err)
+            } else {
+                res.json(books);
+            }
+        });
+    });
+
+/*booksRouter.route('/genre/:genre')
+    .get((req, res) => {
+        BookModel.find({genre: req.params.genre}, (err, books) => {
+            if (err) {
+                res.status(500).send(err)
+            } else {
+                res.json(books);
+            }
+        });
+    });*/
 
 booksRouter.route('/:id')
   .get((req, res) => {
