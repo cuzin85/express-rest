@@ -2,10 +2,12 @@ import mongoose from 'mongoose';
 
 const schema = mongoose.Schema({
   title: {
-    type: String
+    type: String,
+    required: true
   },
   author: {
-    type: String
+    type: String,
+    required: true
   },
   genre: {
     type: String

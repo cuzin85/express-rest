@@ -9,6 +9,8 @@ const db = mongoose.connect('mongodb://localhost/books_db', {
   useMongoClient: true
 });
 
+mongoose.Promise = global.Promise;
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use('/api/books', booksRouter);
