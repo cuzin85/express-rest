@@ -1,6 +1,6 @@
 import express from 'express';
-import BooksController from '../controllers/books'
-import BookController from '../controllers/book'
+import BooksController from '../controllers/books.controller'
+import BookController from '../controllers/book.controller'
 
 export const booksRouter = express.Router();
 

@@ -1,4 +1,4 @@
-import BookModel from '../models/book';
+import BookModel from '../models/book.model';
 
 function getBook(req, res, next) {
   BookModel.findById(req.params.id, (err, book) => {
@@ -15,6 +15,7 @@ function getBook(req, res, next) {
 
 function get(req, res) {
   res.json(req.book.toJSON());
+
 }
 
 function put(req, res) {

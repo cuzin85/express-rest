@@ -1,6 +1,6 @@
 
-import BookModel from '../models/book';
-import Book from './book';
+import BookModel from '../models/book.model';
+import Book from './book.controller';
 
 function get(req, res) {
   const filtersArr = ["author", "genre", "title"];
@@ -16,7 +16,16 @@ function get(req, res) {
     if (err) {
       res.status(500).send(err)
     } else {
-      res.json(books);
+      let fullBooks = [];
+      books.forEach((el, i, arr)=>{
+        let newBook = el.toJSON();
+        let selfLink = `http://${req.headers.host}/api/books/${newBook._id}`;
+        newBook.links = {
+          self: selfLink
+        };
+        fullBooks.push(newBook);
+      });
+      res.json(fullBooks);
     }
   });
   // res.send('Hello from books!')

@@ -1,6 +1,6 @@
 import './db'
 import express from 'express';
-import {booksRouter} from './routes/books'
+import {booksRouter} from './routes/books.route'
 import bodyParser from 'body-parser'
 
 const app = express();
