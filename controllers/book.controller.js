@@ -14,7 +14,12 @@ function getBook(req, res, next) {
 }
 
 function get(req, res) {
-  res.json(req.book.toJSON());
+    let newBook = req.book.toJSON();
+    let booksLink = `http://${req.headers.host}/api/books/`;
+    newBook.links = {
+        booksLink: booksLink
+    };
+  res.json(newBook);
 
 }
 
