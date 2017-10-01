@@ -14,11 +14,12 @@ function getBook(req, res, next) {
 }
 
 function get(req, res) {
-    let newBook = req.book.toJSON();
-    let booksLink = `http://${req.headers.host}/api/books/`;
-    newBook.links = {
-        booksLink: booksLink
-    };
+  const protocol = req.secure ? 'https' : 'http';
+  let newBook = req.book.toJSON();
+  let booksLink = `${protocol}://${req.headers.host}/api/books/`;
+  let authorLink = `${protocol}://${req.headers.host}/api/books?author=${newBook.author}`.replace(new RegExp(' ', 'g'), '%20');
+  let genreLink = `${protocol}://${req.headers.host}/api/books?genre=${newBook.genre}`.replace(new RegExp(' ', 'g'), '%20');
+  newBook.links = { books: booksLink, author: authorLink, genre: genreLink };
   res.json(newBook);
 
 }

@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
-
-const dbURI = 'mongodb://OlegSapega:bbyby1985@ds123614.mlab.com:23614/books_db';
+import config from './config';
+const dbConfig = process.env.NODE_ENV === 'test' ? config.db.test : config.db.dev;
+const dbURI = `mongodb://${dbConfig.user}:${dbConfig.password}@${dbConfig.server}:${dbConfig.port}/${dbConfig.name}`;
 
 mongoose.Promise = global.Promise;
 

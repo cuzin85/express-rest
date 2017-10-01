@@ -4,7 +4,7 @@ import {booksRouter} from './routes/books.route'
 import bodyParser from 'body-parser'
 
 const app = express();
-const port = 8089;
+const port = process.env.PORT || 8089;
 
 
 app.use(bodyParser.urlencoded({extended: true}));

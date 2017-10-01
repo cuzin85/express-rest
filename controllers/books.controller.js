@@ -17,12 +17,15 @@ function get(req, res) {
       res.status(500).send(err)
     } else {
       let fullBooks = [];
+      const protocol = req.secure ? 'https' : 'http';
       books.forEach((el, i, arr)=>{
         let newBook = el.toJSON();
-        let selfLink = `http://${req.headers.host}/api/books/${newBook._id}`;
-        newBook.links = {
-          self: selfLink
-        };
+
+        let selfLink = `${protocol}://${req.headers.host}/api/books/${newBook._id}`;
+        let authorLink = `${protocol}://${req.headers.host}/api/books?author=${newBook.author}`.replace(new RegExp(' ', 'g'), '%20');
+        let genreLink = `${protocol}://${req.headers.host}/api/books?genre=${newBook.genre}`.replace(new RegExp(' ', 'g'), '%20');
+        let authorAndGenreLink = `${protocol}://${req.headers.host}/api/books?author=${newBook.author}&genre=${newBook.genre}`.replace(new RegExp(' ', 'g'), '%20');
+        newBook.links = { self: selfLink, author: authorLink, genre: genreLink, authorGenre: authorAndGenreLink };
         fullBooks.push(newBook);
       });
       res.json(fullBooks);
