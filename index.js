@@ -1,10 +1,14 @@
 import './db'
+import config from './config.json';
 import express from 'express';
 import {booksRouter} from './routes/books.route'
 import bodyParser from 'body-parser'
 
 const app = express();
-const port = process.env.PORT || 8089;
+
+const dbConfig = process.env.NODE_ENV === 'test' ? config.test : config.dev;
+
+const port = dbConfig.port;
 
 
 app.use(bodyParser.urlencoded({extended: true}));

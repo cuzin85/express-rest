@@ -36,8 +36,19 @@ function get(req, res) {
 
 function post(req, res) {
   let book = new BookModel(req.body);
-  req.book = book;
-  Book.saveBook(req, res);
+  // req.book = book;
+  if (req.body.title) {
+    book.save();
+
+    // 201 = created
+    res.status(201);
+    res.send(book);
+  } else {
+    res.status(400);
+    res.send('Title is required')
+  }
+
+  // Book.saveBook(req, res);
 }
 
 export default {get, post}

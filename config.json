@@ -1,0 +1,18 @@
+{
+  "dev": {
+    "port": "8088",
+    "user": "OlegSapega",
+    "password": "bbyby1985",
+    "server": "ds123614.mlab.com",
+    "dbPort": "23614",
+    "name": "books_db"
+  },
+  "test": {
+    "port": "8089",
+    "user": "OlegSapega",
+    "password": "bbyby1985",
+    "server": "ds157964.mlab.com",
+    "dbPort": "57964",
+    "name": "books_db_test"
+  }
+}

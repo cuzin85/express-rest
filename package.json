@@ -6,8 +6,8 @@
   "scripts": {
     "start": "npm run dev",
     "server": "babel-watch index.js",
-    "dev": "cross-env PORT=8088 NODE_ENV=dev npm run server",
-    "test": "cross-env PORT=8089 NODE_ENV=test mocha --compilers js:babel-core/register"
+    "dev": "cross-env NODE_ENV=dev npm run server",
+    "test": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register"
   },
   "repository": {
     "type": "git",
