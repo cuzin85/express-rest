@@ -4,7 +4,7 @@ import express from 'express';
 import {booksRouter} from './routes/books.route'
 import bodyParser from 'body-parser'
 
-const app = express();
+export const app = express();
 
 const dbConfig = process.env.NODE_ENV === 'test' ? config.test : config.dev;
 

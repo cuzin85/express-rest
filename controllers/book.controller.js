@@ -50,14 +50,21 @@ function remove(req, res) {
     });
 }
 
-function saveBook(req, res) {
+function saveBook(req, res, cb, isFull) {
   req.book.save()
     .then((book) => {
+      if (cb) {
+        cb(book);
+        if (!isFull) {
+          return;
+        }
+      }
       res.status(201);
-      res.send(book);
+      res.json(book);
     })
     .catch((err) => {
-      res.status(400).send(err.message);
+      res.status(400);
+      res.send(err.message);
     });
 }
 

@@ -35,6 +35,7 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-watch": "^2.0.7",
-    "cross-env": "^5.0.5"
+    "cross-env": "^5.0.5",
+    "supertest": "^3.0.0"
   }
 }

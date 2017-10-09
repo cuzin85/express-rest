@@ -35,20 +35,24 @@ function get(req, res) {
 }
 
 function post(req, res) {
-  let book = new BookModel(req.body);
-  // req.book = book;
+  const book = new BookModel(req.body);
+
   if (req.body.title) {
-    book.save();
+    // let resJs = res.json(book);
+    // console.log('resJs:', resJs);
+    /*Book.saveBook(req, res, (book) => {
+    }, true);*/
 
     // 201 = created
+    book.save();
     res.status(201);
-    res.send(book);
+    res.json(book);
+
   } else {
     res.status(400);
     res.send('Title is required')
   }
 
-  // Book.saveBook(req, res);
 }
 
 export default {get, post}
